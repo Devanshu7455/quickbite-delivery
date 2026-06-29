@@ -1,31 +1,42 @@
 services:
   - type: web
-    name: backend
+    name: quickbite-backend
     env: node
     plan: free
     buildCommand: cd backend && npm install
     startCommand: cd backend && npm start
     envVars:
+      - key: PORT
+        value: 10000
       - key: MONGO_URI
-        fromDatabase:
-          name: food-delivery-db
-          property: connectionString
+        sync: false
       - key: JWT_SECRET
         generateValue: true
+      - key: SALT
+        value: 10
       - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+      - key: ADMIN_URL
         sync: false
 
   - type: web
-    name: frontend
+    name: quickbite-frontend
     env: static
     plan: free
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_BACKEND_URL
+        sync: false
 
   - type: web
-    name: admin
+    name: quickbite-admin
     env: static
     plan: free
     buildCommand: cd admin && npm install && npm run build
     staticPublishPath: admin/dist
-
+    envVars:
+      - key: VITE_BACKEND_URL
+        sync: false
