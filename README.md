@@ -1,126 +1,213 @@
-# TOMATO - Food Ordering Website
+# QuickBite Delivery
 
-This repository hosts the source code for TOMATO, a dynamic food ordering website built with the MERN Stack. It offers a user-friendly platform for seamless online food ordering.
+QuickBite is a full-stack food delivery web app built with the MERN stack.
 
-## Demo
+It includes a customer ordering app, an admin dashboard, an Express backend API, MongoDB storage, JWT authentication, Stripe test checkout, cart management, image uploads, and order tracking.
 
-- User Panel: [https://food-delivery-frontend-s2l9.onrender.com/](https://food-delivery-frontend-s2l9.onrender.com/)
-- Admin Panel: [https://food-delivery-admin-wrme.onrender.com/](https://food-delivery-admin-wrme.onrender.com/)
+## Project Structure
+
+```txt
+backend/   Express API, MongoDB models, JWT auth, Stripe, image uploads
+frontend/  Customer React app
+admin/     Admin React dashboard
+```
 
 ## Features
 
-- User Panel
-- Admin Panel
-- JWT Authentication
-- Password Hashing with Bcrypt
-- Stripe Payment Integration
-- Login/Signup
-- Logout
-- Add to Cart
-- Place Order
-- Order Management
-- Products Management
-- Filter Food Products
-- Login/Signup
-- Authenticated APIs
-- REST APIs
-- Role-Based Identification
-- Beautiful Alerts
+### Customer App
 
-## Screenshots
+- Browse food items
+- Filter menu by category
+- Register and login
+- Add and remove cart items
+- Place orders
+- Pay using Stripe test checkout
+- Verify payment
+- View order history
+- Track order status
 
-![Hero](https://i.ibb.co/59cwY75/food-hero.png)
-- Hero Section
+### Admin Dashboard
 
-![Products](https://i.ibb.co/JnNQPyQ/food-products.png)
-- Products Section
+- Admin login
+- Add food items with image upload
+- View food list
+- Remove food items
+- View all orders
+- Update order status
 
-![Cart](https://i.ibb.co/t2LrQ8p/food-cart.png)
-- Cart Page
+### Backend
 
-![Login](https://i.ibb.co/s6PgwkZ/food-login.png)
-- Login Popup
+- Express REST API
+- MongoDB with Mongoose
+- JWT authentication
+- Password hashing with bcrypt
+- Role-based admin checks
+- Multer image uploads
+- Stripe Checkout integration
+- CORS configuration
+- Render deployment blueprint
+
+## Tech Stack
+
+- React
+- Vite
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT
+- bcrypt
+- Multer
+- Stripe
+- Axios
+- React Toastify
+- Render
+
+## Environment Variables
+
+Backend `.env`:
+
+```env
+PORT=4000
+MONGO_URI=your_mongodb_atlas_uri
+JWT_SECRET=your_secret_key
+SALT=10
+STRIPE_SECRET_KEY=your_stripe_test_secret_key
+FRONTEND_URL=http://localhost:5173
+ADMIN_URL=http://localhost:5174
+```
+
+Frontend `.env`:
+
+```env
+VITE_BACKEND_URL=http://localhost:4000
+```
+
+Admin `.env`:
+
+```env
+VITE_BACKEND_URL=http://localhost:4000
+```
+
+Never commit real `.env` files.
 
 ## Run Locally
 
-Clone the project
+Backend:
 
 ```bash
-    git clone https://github.com/Mshandev/Food-Delivery
+cd backend
+npm install
+npm run dev
 ```
-Go to the project directory
+
+Frontend:
 
 ```bash
-    cd Food-Delivery
+cd frontend
+npm install
+npm run dev
 ```
-Install dependencies (frontend)
+
+Admin:
 
 ```bash
-    cd frontend
-    npm install
-```
-Install dependencies (admin)
-
-```bash
-    cd admin
-    npm install
-```
-Install dependencies (backend)
-
-```bash
-    cd backend
-    npm install
-```
-Setup Environment Vaiables
-
-```Make .env file in "backend" folder and store environment Variables
-  JWT_SECRET=YOUR_SECRET_TEXT
-  SALT=YOUR_SALT_VALUE
-  MONGO_URL=YOUR_DATABASE_URL
-  STRIPE_SECRET_KEY=YOUR_KEY
- ```
-
-Setup the Frontend and Backend URL
-   - App.jsx in Admin folder
-      const url = YOUR_BACKEND_URL
-     
-  - StoreContext.js in Frontend folder
-      const url = YOUR_BACKEND_URL
-
-  - orderController in Backend folder
-      const frontend_url = YOUR_FRONTEND_URL 
-
-Start the backend server\n\n```bash\n    cd backend && npm run server\n```\n\n## Production Build and Deploy to Render\n\n1. Copy `.env.example` to `.env` in each folder and fill values (MongoAtlas URI, Stripe key, etc.). Backend: add `FRONTEND_URL=https://your-frontend.onrender.com`.\n2. `git init`, `git add .`, `git commit -m "Initial"`, push to GitHub repo.\n3. On Render.com: New Blueprint > link GitHub repo > deploy (auto-detects render.yaml).\n4. Set env vars in Render dashboard (e.g., VITE_BACKEND_URL=your-backend.onrender.com/api for frontend/admin .env, but use Render env vars UI).\n5. Frontend/Admin: Update VITE_BACKEND_URL to backend URL post-deploy.\n6. Test verify/order redirects.
-
-Start the Frontend server
-
-```bash
-    npm start
+cd admin
+npm install
+npm run dev
 ```
 
-Start the Backend server
+## API Routes
 
-```bash
-    npm start
+User:
+
+```txt
+POST /api/user/register
+POST /api/user/login
 ```
-## Tech Stack
-* [React](https://reactjs.org/)
-* [Node.js](https://nodejs.org/en)
-* [Express.js](https://expressjs.com/)
-* [Mongodb](https://www.mongodb.com/)
-* [Stripe](https://stripe.com/)
-* [JWT-Authentication](https://jwt.io/introduction)
-* [Multer](https://www.npmjs.com/package/multer)
+
+Food:
+
+```txt
+POST /api/food/add
+GET  /api/food/list
+POST /api/food/remove
+```
+
+Cart:
+
+```txt
+POST /api/cart/add
+POST /api/cart/remove
+POST /api/cart/get
+```
+
+Order:
+
+```txt
+POST /api/order/place
+POST /api/order/verify
+POST /api/order/status
+POST /api/order/userorders
+POST /api/order/list
+```
+
+## Stripe Test Payment
+
+Use Stripe test mode.
+
+Test card:
+
+```txt
+4242 4242 4242 4242
+```
+
+Use any future expiry date and any 3 digit CVC.
+
+## Important Fixes Made
+
+- Moved project files to repository root
+- Replaced hardcoded admin backend URL with environment variable
+- Changed admin order list API from GET to POST
+- Fixed order timestamp default
+- Improved backend CORS configuration
+- Improved MongoDB connection handling
+- Improved frontend cart state handling
+- Added try/catch around frontend API calls
+- Fixed frontend and admin Vite config files
+- Updated Render blueprint configuration
 
 ## Deployment
 
-The application is deployed on Render.
+This project includes `render.yaml` for Render deployment.
 
-## Contributing
+It defines:
 
-Contributions are always welcome!
-Just raise an issue, and we will discuss it.
+```txt
+quickbite-backend
+quickbite-frontend
+quickbite-admin
+```
 
-## Feedback
+Set environment variables in Render before deploying.
 
-If you have any feedback, please reach out to me [here](https://www.linkedin.com/in/muhammad-shan-full-stack-developer/)
+## Limitations
+
+- Uploaded images are stored locally in the backend uploads folder
+- Render free services may sleep after inactivity
+- Stripe is configured for test mode
+- Admin role must currently be assigned manually in MongoDB
+- Automated tests are not added yet
+
+## Future Improvements
+
+- Add backend tests
+- Add GitHub Actions CI
+- Add Cloudinary for image storage
+- Add forgot password flow
+- Add screenshots and demo GIF
+- Add admin analytics dashboard
+
+## License
+
+MIT
