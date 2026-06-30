@@ -2,7 +2,6 @@
 
 Tech: React · Node.js · Express · MongoDB · JWT · Stripe · Render
 
-Tech: React · Node.js · Express · MongoDB · JWT · Stripe · Render
 
 QuickBite is a full-stack food delivery web app built with the MERN stack.
 
