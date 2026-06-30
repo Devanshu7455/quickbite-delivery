@@ -1,5 +1,13 @@
 # QuickBite Delivery
 
+![MERN](https://img.shields.io/badge/Stack-MERN-green)
+![React](https://img.shields.io/badge/Frontend-React-blue)
+![Express](https://img.shields.io/badge/Backend-Express-black)
+![MongoDB](https://img.shields.io/badge/Database-MongoDB-brightgreen)
+![Stripe](https://img.shields.io/badge/Payments-Stripe-purple)
+![Render](https://img.shields.io/badge/Deploy-Render-46E3B7)
+
+
 QuickBite is a full-stack food delivery web app built with the MERN stack.
 
 It includes a customer ordering app, an admin dashboard, an Express backend API, MongoDB storage, JWT authentication, Stripe test checkout, cart management, image uploads, and order tracking.
