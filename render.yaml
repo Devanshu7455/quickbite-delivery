@@ -24,6 +24,10 @@ services:
     env: static
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
     envVars:
       - key: VITE_BACKEND_URL
         sync: false
@@ -33,6 +37,10 @@ services:
     env: static
     buildCommand: cd admin && npm install && npm run build
     staticPublishPath: admin/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
     envVars:
       - key: VITE_BACKEND_URL
         sync: false
