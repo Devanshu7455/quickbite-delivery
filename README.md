@@ -27,10 +27,6 @@ Backend API: https://quickbite-backend-92oq.onrender.com
 
 ![Cart](docs/cart.png)
 
-### My Orders
-
-![My Orders](docs/my-orders.png)
-
 ### Admin Add Food
 
 ![Admin Add Food](docs/admin-add.png)
