@@ -15,16 +15,29 @@ Backend API: https://quickbite-backend-92oq.onrender.com
 
 ## Screenshots
 
-Screenshots will be added after deployment.
+### Customer Home
 
-Planned screenshots:
+![Customer Home](docs/home.png)
 
-- Customer home page
-- Menu and cart
-- Checkout page
-- My Orders page
-- Admin add food page
-- Admin orders page
+### Menu
+
+![Menu](docs/menu.png)
+
+### Cart
+
+![Cart](docs/cart.png)
+
+### My Orders
+
+![My Orders](docs/my-orders.png)
+
+### Admin Add Food
+
+![Admin Add Food](docs/admin-add.png)
+
+### Admin Orders
+
+![Admin Orders](docs/admin-orders.png)
 
 ## Project Structure
 
